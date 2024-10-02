@@ -12,5 +12,3 @@ nomePessoa = input("informe o nome da pessoa: ")
 hobbyPessoa = input("informe o hobby da pessoa: ")
 endPessoa = input("Qual o endereço? ")
 
-p2 = Pessoa(nomePessoa, hobbyPessoa, endPessoa)
-p2.exibirHobby()
