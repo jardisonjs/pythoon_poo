@@ -29,7 +29,7 @@ resultado = consulta.fetchall()#Fetchall() irá trazer todos os registros que ex
 print(resultado)
 
 for itens in resultado:
-    print(f"Códigos: {itens[0]}, Nome:{itens[1]}")
+    print(f"id: {itens[0]}, Nome:{itens[1]}")
 
 #Passo8 - encerrar a conexão
 conexao.close()
