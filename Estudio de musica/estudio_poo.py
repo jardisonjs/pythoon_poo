@@ -31,7 +31,7 @@ class Estudio:
 
         conexao.close()
 
-    def consultar(self):
+    def consultar(self,):
         conexao = self.conexao()
         consulta = conexao.cursor()
 
@@ -41,7 +41,6 @@ class Estudio:
         resultado = consulta.fetchall()
 
         for itens in resultado:
-            print(f"id: {itens [0]}")
             print(f"Nome: {itens [1]}")
             print(f"genero: {itens [2]}")
             print(f"preco: {itens [3]}")
@@ -50,12 +49,13 @@ class Estudio:
             
         conexao.close()
 
-    def contInd(self):
+    def contInd(self,Id):
         conexao = self.conexao()
         consulta = conexao.cursor()
 
         sql = "SELECT * FROM artistas WHERE Id = ?"
-        consulta.execute(sql)
+        campos = (Id,)
+        consulta.execute(sql, campos)
 
         resultado = consulta.fetchall()
 
@@ -68,5 +68,45 @@ class Estudio:
             print(f"-"*40) # criando um separador entre cada registro
             
         conexao.close()
+
+    def atualizar(self, nome, Id):
+        conexao = self.conexao()
+        consulta = conexao.cursor()
+
+        sql = "UPDATE artistas SET nome = ? WHERE Id = ?"
+
+        campos = (nome, Id)
+        consulta.execute(sql, campos)
+
+        conexao.commit()
+
+        print(consulta.rowcount, " linha(s) atualizada (s) com sucesso")
+
+        conexao.close()
+
+
+
+    def deletar(self, Id):
+        conexao = self.conexao()
+        consulta = conexao.cursor()
+        
+        sql = "DELETE FROM artistas WHERE Id = ?"
+
+        campos = (Id,)
+
+        consulta.execute(sql, campos)
+
+        conexao.commit()
+
+        print(consulta.rowcount, " linha(s) deletada(s) com sucesso")
+    
+        conexao.close()
+
+        
+
+
+
+
+
         
                

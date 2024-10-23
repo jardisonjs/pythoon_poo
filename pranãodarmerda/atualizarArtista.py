@@ -18,6 +18,7 @@ consulta.execute(tabela)
 nome = input("Informe o novo nome do artista: ")
 id = int(input("Informe o id do artista: "))
 
+
 sql = "UPDATE funcionario SET nome = ? WHERE id = ?"
 
 campos = (nome, id)
